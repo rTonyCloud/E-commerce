@@ -10,7 +10,7 @@
 * [Questions](#questions)
 
 ## Video Link
-
+https://watch.screencastify.com/v/jYERf2w2BUj6ar3Le1ZS
 
 ## Description 
 This is the backend of an Ecommerce website using technologies such as  mysql and sequelize for databases and insomnia for get, post, put and delete routes.
