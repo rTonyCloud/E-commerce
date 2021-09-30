@@ -38,30 +38,28 @@ router.get('/:id', (req, res) => {
     console.log(err);
     res.json(500).json(err);
   });
+})
 
   router.post('/', (req, res) => {
     // create a new tag
     console.log(req.body);
-    Tag.create({
-      title: req.body.name,
-      body: req.body.body,
-      category: req.body.category
-    }).then(tagData => {
+    Tag.create(
+      {
+        tag_name: req.body.tag_name
+      }
+      ).then(tagData => {
       res.json(tagData);
     }).catch(err => {
       console.log(err);
       res.json(500).json(err);
     });
-  });
 });
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value/
-  Tag.update({
-    title: req.body.title,
-    body: req.body.body,
-    category: req.body.category
-  }, {
+  Tag.update(
+    req.body,
+    {
     where: {
       id: req.params.id
     }
@@ -69,10 +67,10 @@ router.put('/:id', (req, res) => {
     if (!tagData) {
       res.status(404).json({
         message: 'Can not update tag'
-      });
+      })
       return;
     }
-   res.json(tagData);
+    res.json(tagData);
   });
 });
 
@@ -81,7 +79,7 @@ router.delete('/:id', (req, res) => {
   // delete on tag by its `id` value
   Tag.destroy({
     where: {
-      category: req.params.id
+      id: req.params.id
     }
   }).then(tagData => {
     if (!tagData) {
